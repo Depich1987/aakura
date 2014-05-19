@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition extends="frontOfficeLayout" name="frontoffice/payments/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/frontoffice/payments/list.jspx"/>
+    </definition>
+    
+	<definition extends="frontOfficeLayout" name="frontoffice/payments/show">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/frontoffice/payments/show.jspx"/>
+    </definition>
+    
+	<definition extends="frontOfficeLayout" name="frontoffice/payments/create">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/frontoffice/payments/create.jspx"/>
+    </definition>
+    
+	<definition extends="frontOfficeLayout" name="frontoffice/payments/update">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/frontoffice/payments/update.jspx"/>
+    </definition>
+    
+</tiles-definitions>

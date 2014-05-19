@@ -1,0 +1,149 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-03-28 18:43:06
+project --topLevelPackage com.j1987.aakura --projectName a-akura --java 6 --packaging JAR
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-03-28 18:43:23
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-03-28 18:48:22
+jpa setup --database MYSQL --provider ECLIPSELINK 
+hint 
+entity jpa --class ~.domain.JCompany --table J_COMPANY --testAutomatically true
+field string --fieldName name --notNull 
+field string --fieldName description
+hint
+web mvc setup 
+hint
+web mvc scaffold --class ~.web.CompanyController
+hint
+// [failed] perform tests 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-03-28 18:55:47
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-03-31 12:01:22
+entity jpa --class ~.domain.JActivity --table J_ACTIVITY --testAutomatically true
+field string --fieldName name --notNull true
+field string --fieldName description
+field reference --fieldName company --type ~.domain.JCompany --cardinality MANY_TO_ONE 
+focus --class ~.domain.JCompany
+field set --fieldName activities --type ~.domain.JActivity --cardinality ONE_TO_MANY 
+entity jpa --class ~.domain.JPayment --table J_PAYMENT --testAutomatically true
+field string --fieldName description
+field date --fieldName creationDate --type java.util.Date --notNull 
+field string --fieldName createdBy
+field number --type java.math.BigDecimal --fieldName amount --notNull 
+field string --fieldName paymentType --notNull 
+field date --fieldName paymentDate --type java.util.Date --notNull true
+field date --fieldName modificationDate --type java.util.Date
+field string --fieldName modificatedBy 
+entity jpa --class ~.domain.JUser --table J_USER --testAutomatically true
+field string --fieldName userName --notNull 
+field string --fieldName firstName
+field string --fieldName lastName
+field string --fieldName phoneNumber
+field string --fieldName email
+entity jpa --class ~.domain.JRole --table J_ROLE --testAutomatically true
+web mvc scaffold --class ~web.RoleController
+focus --class ~.domain.JActivity
+web mvc scaffold --class ~.web.ActivityController
+focus --class ~.domain.JUser
+web mvc scaffold --class ~.web.UserController
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-03-31 17:37:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-06 10:35:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-06 12:55:17
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-10 21:10:55
+focus --class ~.domain.JActivity
+finder list
+finder add --finderName findJActivitysByCodeEquals
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-10 21:32:01
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-10 21:32:26
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-11 22:09:00
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-13 11:00:36
+security setup
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-13 14:55:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-15 13:35:57
+focus --class ~.domain.JUser
+field string --fieldName password --notNull true
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-15 13:47:15
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-15 15:50:38
+addon search french
+addon search --requiresDescription french
+osgi start --url file:///C:/Users/Admin/Downloads/org.springframework.roo.addon.i18n.french-0.1.0.RELEASE.jar
+osgi ps 
+// [failed] web mvc language --code fr 
+addon list 
+osgi ps 
+addon search --requiresDescription french
+web mvc language --code en 
+// [failed] web mvc language --code fr
+// [failed] perform clean 
+osgi start --url http://code.google.com/p/fr-test/source/browse/repo/org/springframework/roo/addon/i18n/french/org.springframework.roo.addon.i18n.french/0.1.0.RELEASE/org.springframework.roo.addon.i18n.french-0.1.0.RELEASE.jar
+addon search french
+// [failed] web mvc install language --code fr 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-15 20:30:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-15 23:05:27
+focus --class ~.domain.JAuditLog
+web mvc scaffold --class ~.web.AuditLogConntroller
+focus --class ~.domain.JPayment
+web mvc scaffold --class ~.web.PaymentController
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-16 00:01:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-18 01:12:30
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-18 01:13:21
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-18 01:13:30
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-18 10:15:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-19 18:42:07
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-19 18:44:21
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-20 09:42:59
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-20 12:06:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-20 19:40:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-22 15:15:32
+focus --class ~.web.backoffice.BOCompanyController
+// [failed] perform tests 
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-22 15:38:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-22 15:38:34
+// [failed] perform tests 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-22 19:06:54
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-25 03:56:13
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-25 09:06:01
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-25 18:44:07
+focus --class ~.domain.JPayment
+finder list 
+finder add --finderName findPaymentsByPaymentDateBetween
+finder add --finderName findJPaymentsByPaymentDateBetween
+field string --fieldName reference --notNull true
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-25 18:53:30
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-25 18:53:54
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-25 18:55:46
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-25 19:22:57
+focus --class ~.domain.JPayment
+field reference --fieldName activity --type ~.domain.JActivity --cardinality MANY_TO_ONE 
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-25 19:26:26
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-28 12:10:32
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-02 16:25:03
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-02 16:44:00
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-02 16:44:22
+pgp trust --keyId 0x3FBAEA78
+addon install bundle --bundleSymbolicName org.gvnix.web.report.roo.addon
+hint
+osgi ps 
+web report add --controller ~.web.backoffice.BOActivityController --reportName activityReport --format pdf,xls
+focus --class ~.web.backoffice.BOUserController
+web report add --controller ~.web.backoffice.BOUserController --reportName usersReport --format pdf,xls
+focus --class ~.web.ActivityController
+web report add --controller ~.web.ActivityController --reportName activityListReport --format pdf,xls
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-02 17:10:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-04 11:05:48
+web report add --controller ~.web.backoffice.BOUserController --reportName userListReport
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-04 12:57:03
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-04 12:57:27
+web report setup 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-04 12:59:26
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-04 13:00:40
+web report setup 
+web report add --controller ~.web.ActivityController --reportName activityListReport --format pdf,xls
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-04 14:04:42
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-05 10:57:34

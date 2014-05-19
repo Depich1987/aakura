@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message code="label_com_j1987_aakura_domain_juser_plural" var="users_label"/>
+    <spring:message code="label_com_j1987_aakura_domain_juser" var="user_label"/>
+
+	<spring:message code="entity_show" arguments="${user_label}"	var="userentity_showdetails" />
+	<spring:message code="menu_backto_entitylist" arguments="${users_label}" var="backtouserslist_label" />
+	<spring:message code="backoffice_assignroletouser" arguments="${user.userName}" var="assignroletouser_label"/>
+	<spring:message code="backoffice_assignactivitytouser" arguments="${user.userName}" var="assignactivitytouser_label"/>
+	<spring:message code="backoffice_unassignuser" arguments="${user.userName}" var="unassignuser_label"/>
+
+	<spring:url value="/backoffice/users/${user.id}?form" var="updateuser_url"/>
+	<spring:url value="/backoffice/users/list?size=10" var="userslist_url"/>
+	
+	<spring:url value="/backoffice/users/unassign/${user.userName}" var="unassignuser_url"/>
+	<spring:url value="/backoffice/users/assignrole/${user.userName}?form" var="assignroletouser_url"/>
+	<spring:url value="/backoffice/users/assignactivity/${user.userName}?form" var="assignactivitytouser_url"/>
+
+   	<p>
+   		<div class="btn-toolbar">
+   			<div class="btn-group">
+			   	<a href="${userslist_url}" class="btn btn-default">
+			   		${backtouserslist_label}
+			   	</a>
+			   	<a href="${updateuser_url}" class="btn btn-warning">
+			   		<spring:message code="entity_update" arguments="${user_label}" />
+			   	</a>
+		   	</div>
+		   	
+		   	<div class="btn-group">
+		   		<c:if test="${user.roles.size() eq 0 }">
+				   	<a href="${assignroletouser_url}" class="btn btn-default">
+				   		${assignroletouser_label}
+				   	</a>
+			   	</c:if>
+			   	
+			   	<c:if test="${user.roles.size() gt 0 and user.roleName eq 'GERANT' and user.activities.size() eq 0}">
+				   	<a href="${assignactivitytouser_url}" class="btn btn-default">
+				   		${assignactivitytouser_label}
+				   	</a>
+			   	</c:if>
+			   	
+			   	<c:if test="${user.activities.size() gt 0 or user.companies.size() gt 0}">
+				   	<a href="${unassignuser_url}" class="btn btn-danger">
+				   		${unassignuser_label}
+				   	</a>
+			   	</c:if>
+		   	</div>
+	   	</div>
+    </p>
+    
+	<div class="page-header">
+		<h3>${userentity_showdetails}</h3>
+	</div>
+
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_juser_username"/>
+				</dt>
+				<dd>${user.userName}</dd>
+			</dl>
+		</div>
+		<c:if test="${user.roles.size() gt 0 }">
+			<div class="form-group">
+				<dl>
+					<dt>
+						<spring:message code="label_com_j1987_aakura_domain_juser_rolename"/>
+					</dt>
+					<dd>${user.roleName}</dd>
+				</dl>
+			</div>
+		</c:if>
+		
+		
+			<div class="form-group">
+				<dl>
+					<dt>
+						<spring:message code="label_com_j1987_aakura_domain_juser_activitynames"/>
+					</dt>
+					<dd>${user.activityNames}</dd>
+				</dl>
+			</div>
+	
+		<hr />
+
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_juser_firstname"/>
+				</dt>
+				<dd>${user.firstName}</dd>
+			</dl>
+		</div>
+		
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_juser_lastname"/>
+				</dt>
+				<dd>${user.lastName}</dd>
+			</dl>
+		</div>
+		
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_juser_phonenumber"/>
+				</dt>
+				<dd>${user.phoneNumber}</dd>
+			</dl>
+		</div>
+		
+				<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_juser_email"/>
+				</dt>
+				<dd>${user.email}</dd>
+			</dl>
+		</div>
+
+</div>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:spring="http://www.springframework.org/tags" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    
+    <spring:message code="menu_category_jcompany_label" var="company_label" />
+    <spring:message code="label_com_j1987_aakura_domain_jcompany_name" var="companyname_label" />
+    <spring:message code="label_com_j1987_aakura_domain_jcompany_description" var="companydescription_label" />
+    
+    <spring:message code="form_header_label" arguments="${company_label}" var="formheader_label"/>
+    <spring:message code="button_save" var="save_button" htmlEscape="false" />
+    
+    <spring:url value="/backoffice/generalsettings/update" var="updategeneralsettins_url"/>
+    <spring:url value="/backoffice/generalsettins/details" var="detailsgeneralsettings_url"/>
+    
+   	<p>
+	   	<a href="${detailsgeneralsettings_url}" class="btn btn-default">
+	   		<spring:message code="menu_backto_entitydetails" arguments="${company_label}" />
+	   	</a>
+    </p>
+    
+    <div class="page-header">
+          <h3>
+			${formheader_label}
+		 </h3>
+     </div>
+     
+     <form:form action="${updategeneralsettins_url}" method="post" modelAttribute="company" commandName="company" cssClass="form-horizontal">
+	 
+	 <div class="form-group">
+	   <label class="col-sm-2 control-label">
+			${companyname_label}
+	   </label>
+	   <div class="col-sm-6">
+	     <form:input path="name" cssClass="form-control" autocomplete="false" placeholder="${companyname_label}"/>
+	   </div>
+	 </div>
+	 
+	 <div class="form-group">
+	   <label class="col-sm-2 control-label">
+			${companydescription_label}
+	   </label>
+	   <div class="col-sm-6">
+	     <form:textarea path="description" cssClass="form-control" autocomplete="false" placeholder="${companydescription_label}"/>
+	   </div>
+	 </div>
+	 
+     <div class="form-group">
+	   <div class="col-sm-offset-2 col-sm-10">
+	   	 <form:hidden path="id" />
+	     <button type="submit" class="btn btn-success">${save_button}</button>
+	   </div>
+	 </div>
+	 
+    </form:form>
+
+</div>

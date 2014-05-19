@@ -1,0 +1,66 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  
+  <spring:message var="app_name" code="application_name" htmlEscape="false" />
+  <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
+  
+  <spring:url value="/frontoffice/payments/list?size=10" var="paymentlist_url"/>
+  <spring:url value="/frontoffice/reports/filter?form" var="reportfilter_url"/>
+  <spring:url value="/frontoffice/balancesheet/filter?form" var="balancesheetfilter_url"/>
+  
+    <div class="jumbotron">
+    	<h2>
+      		<spring:message code="welcome_h3" arguments="${app_name}" />
+      	</h2>
+      	
+   	    <p>
+	      <spring:message code="welcome_text" />
+	    </p>
+    </div>
+
+  
+  	<div class="col-6 col-sm-6 col-lg-4">
+      <h4>
+	  	<spring:message code="frontoffice_paymentdashboard" />
+	  </h4>
+      <p>
+      	<spring:message code="explanation_paymenttext" htmlEscape="false"/>
+	  </p>
+     
+      <p>
+      	<a class="btn btn-default" href="${paymentlist_url}" role="button">
+			<spring:message code="goahead_text" htmlEscape="false"/>
+		</a>
+	  </p>
+    </div><!--/span-->
+    <div class="col-6 col-sm-6 col-lg-4">
+      <h4>
+		<spring:message code="frontoffice_activitiesreports" />
+	  </h4>
+      <p>
+		<spring:message code="explanation_activityreport" htmlEscape="false"/>
+	 </p>
+      
+     <p>
+      	<a class="btn btn-default" href="${reportfilter_url}" role="button">
+			<spring:message code="goahead_text" htmlEscape="false"/>
+		</a>
+	  </p>
+
+    </div><!--/span-->
+    <div class="col-6 col-sm-6 col-lg-4">
+      <h4>
+      	<spring:message code="frontoffice_balancesheet" />
+      </h4>
+      <p>
+		<spring:message code="explanation_balancesheet"/>
+	  </p>
+      <p>
+       	<a class="btn btn-default" href="${balancesheetfilter_url}" role="button">
+			<spring:message code="goahead_text" htmlEscape="false"/>
+		</a>
+      </p>
+    </div><!--/span-->
+  
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition extends="backOfficeLayout" name="backoffice/users/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/list.jspx"/>
+    </definition>
+	
+	<definition extends="backOfficeLayout" name="backoffice/users/show">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/show.jspx"/>
+    </definition>
+
+	<definition extends="backOfficeLayout" name="backoffice/users/create">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/create.jspx"/>
+    </definition>
+
+	<definition extends="backOfficeLayout" name="backoffice/users/update">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/update.jspx"/>
+    </definition>
+    
+   	<definition extends="backOfficeLayout" name="backoffice/users/assignrole">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/roleassignment.jspx"/>
+    </definition>
+    
+   	<definition extends="backOfficeLayout" name="backoffice/users/assignactivity">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/users/activityassignment.jspx"/>
+    </definition>
+    
+</tiles-definitions>

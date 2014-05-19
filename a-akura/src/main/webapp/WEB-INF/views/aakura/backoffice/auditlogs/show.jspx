@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_j1987_aakura_domain_JAuditLog" object="${jauditlog_}" path="/jauditlogs" z="jG98L8ZW14hQLOBYjgncmfnfZXU=">
+        <field:display field="userId" id="s_com_j1987_aakura_domain_JAuditLog_userId" object="${jauditlog_}" z="gD1iCPnptYUEYe6WfpvK5BYNiAU="/>
+        <field:display field="description" id="s_com_j1987_aakura_domain_JAuditLog_description" object="${jauditlog_}" z="yjBbpX9qT6DJoPJTlW4vylaNTwQ="/>
+        <field:display field="eventCategory" id="s_com_j1987_aakura_domain_JAuditLog_eventCategory" object="${jauditlog_}" z="fQZAJDPLKok3epEWFlg0C7+l9II="/>
+        <field:display field="event" id="s_com_j1987_aakura_domain_JAuditLog_event" object="${jauditlog_}" z="XS2JWqygV4UVKYSVnJMVS52S5zk="/>
+        <field:display field="param1" id="s_com_j1987_aakura_domain_JAuditLog_param1" object="${jauditlog_}" z="Czz3+US/+Iu0HfdGT4/LYjbIRys="/>
+        <field:display field="param2" id="s_com_j1987_aakura_domain_JAuditLog_param2" object="${jauditlog_}" z="awy0VVQuYrJKz6ATSTZbByBhek4="/>
+        <field:display date="true" dateTimePattern="${JAuditLog__eventdate_date_format}" field="eventDate" id="s_com_j1987_aakura_domain_JAuditLog_eventDate" object="${jauditlog_}" z="ZoP75H35FbiWid8iFEMgSBZzfL8="/>
+        <field:display field="eventDateAsString" id="s_com_j1987_aakura_domain_JAuditLog_eventDateAsString" object="${jauditlog_}" z="BanGaGKgk5rxb4NP+AMgY+2nf0o="/>
+    </page:show>
+</div>

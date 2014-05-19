@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="defaultLayout" template="/WEB-INF/layouts/aakura/default.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/aakura/header.jspx" />
+    <put-attribute name="body" value="/WEB-INF/views/aakura/index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/aakura/footer.jspx" />
+  </definition>
+
+  <definition name="backOfficeLayout" template="/WEB-INF/layouts/aakura/backofficeLayout.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/aakura/backoffice/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/aakura/backoffice/menu.jspx" />
+    <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/aakura/backoffice/footer.jspx" />
+  </definition>
+  
+  <definition name="frontOfficeLayout" template="/WEB-INF/layouts/aakura/frontofficeLayout.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/aakura/frontoffice/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/aakura/frontoffice/menu.jspx" />
+    <put-attribute name="body" value="/WEB-INF/views/aakura/frontoffice/index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/aakura/frontoffice/footer.jspx" />
+  </definition>
+  
+  <definition name="loginLayout" template="/WEB-INF/layouts/aakura/loginLayout.jspx">
+    <put-attribute name="body" value="/WEB-INF/views/login.jspx" />
+  </definition>
+  
+</tiles-definitions>

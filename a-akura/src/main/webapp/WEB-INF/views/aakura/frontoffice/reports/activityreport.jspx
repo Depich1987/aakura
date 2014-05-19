@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:security="http://www.springframework.org/security/tags"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	 xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" 
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:message code="label_com_j1987_aakura_domain_jpayment_plural" var="payments_label" />
+    <spring:message code="label_com_j1987_aakura_domain_jpayment" var="payment_label" />
+    
+    <spring:url value="/frontoffice/payments/create?form" var="createpayment_url"/>
+    <spring:url value="/frontoffice/payments/list?size=10" var="filterpayment_url"/>
+ 
+    <spring:url value="/frontoffice/reports/download/activityreport" var="exportdata_url" htmlEscape="false"/>
+
+    
+  	<p>
+  		<div class="btn-toolbar">
+   			<div class="btn-group">
+		   	    <form:form action="${exportdata_url}" commandName="reportFilterForm" modelAttribute="reportFilterForm" method="GET" cssClass="form-inline">
+			        <c:if test="${not empty report_formats}">
+			        
+        			 	<div class="form-group">
+						   <label class="col-sm-2 control-label">
+				            	<select id="_select_format" name="format">
+					                <c:forEach items="${report_formats}" var="format">
+					                    <option id="option_format_${format}" value="${format}">
+					                        <c:out value="${fn:toUpperCase(format)}"/>
+					                    </option>
+					                </c:forEach>
+				            	</select>
+						   </label>
+						   <div class="col-sm-3">
+						   		<select id="activityCodeList" name="activityCodeList" multiple="multiple">
+						   			<c:forEach items="${reportFilterForm.activityCodeList}" var="activityCode">
+						   				<OPTION value="${activityCode}" selected="selected">${activityCode}</OPTION>
+						   			</c:forEach>
+						   		</select>
+						   		<form:hidden  path="paymentIn" />
+						   		<form:hidden  path="paymentOut" />
+						   		<form:hidden  path="startDate" />
+						   		<form:hidden  path="endDate" />
+						   		
+						   </div>
+					   </div>
+					        <div class="form-group">
+	   							<div class="col-sm-offset-2 col-sm-10">
+	     							<input type="submit" class="btn btn-default"/>
+	   							</div>
+					   		</div>
+					   <SCRIPT type="text/javascript">
+					   	$(document).ready(function(){
+					   			$('#s2id_activityCodeList').hide();
+					   	});
+					   </SCRIPT>
+					   
+			        </c:if>
+			        
+			    </form:form>
+	   		</div>
+
+	   	</div>
+	</p>
+	
+    <div class="page-header">
+          <h3>
+			<spring:message code="menu_jactivity_activitylistreport_report" htmlEscape="true"/>
+          </h3>
+    </div>
+     
+    <c:if test="${payments.size() eq 0 }">
+
+	 	<p class="text-center">
+	 		<div class="alert alert-warning">
+	 			<spring:message arguments="${payments_label}" code="entity_not_found" />
+	        </div>
+	 	</p>
+
+  	 </c:if>
+  	 
+     <c:if test="${payments.size() gt 0 }">
+	    
+	        <table:table data="${payments}" id="l_com_j1987_aakura_domain_JPayment" path="/frontoffice/payments" create="false" show="false" delete="false" update="false">
+	        	<table:column id="c_com_j1987_aakura_domain_JPayment_reference" property="reference"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_amount" property="amount"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_paymentDate" property="paymentDate"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_description" property="description"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_paymentType" property="paymentType"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_createdBy" property="createdBy"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_creationDate" property="creationDate" dateTimePattern="dd/mm/yyyy hh:mm:s"/>
+	        </table:table>
+	        
+       		<p>
+	    	   <div class="panel panel-default">
+			      <div class="panel-heading">
+			        <h3 class="panel-title">
+			        	<spring:message code="statistics_selectedactivities"/> : ${statistics.selectedActivities}
+			        </h3>
+			      </div>
+			      <div class="panel-body">
+        	 		<div class="alert alert-warning">
+        	 			<spring:message code="statistics_countpaymentin"/>
+        	 			(${statistics.countPaymentIn})
+        	 			:
+			 			<strong>
+							<fmt:formatNumber type="number" value="${statistics.aggregatePaymentIn}"/>
+						</strong>
+			        </div>
+           	 		<div class="alert alert-warning">
+           	 			<spring:message code="statistics_countpaymentout"/>
+           	 			(${statistics.countPaymentOut})
+           	 			:
+			 			<strong>
+							<fmt:formatNumber type="number" value="${statistics.aggregatePaymentOut}"/>
+						</strong>
+			        </div>
+			        <c:if test="${statistics.balanceAmount lt 0}">
+   	           	 		<div class="alert alert-danger">
+	           	 			<spring:message code="statistics_balanceamount"/>
+	           	 			:
+				 			<strong>
+				 			<fmt:formatNumber type="number" value="${statistics.balanceAmount}"/>
+							</strong>
+				        </div>
+			        </c:if>
+   			        <c:if test="${statistics.balanceAmount gt 0}">
+   	           	 		<div class="alert alert-success">
+	           	 			<spring:message code="statistics_balanceamount"/>
+	           	 			:
+				 			<strong>
+				 			<fmt:formatNumber type="number" value="${statistics.balanceAmount}"/>
+							</strong>
+				        </div>
+			        </c:if>
+
+			      </div>
+			    </div>
+     		</p>
+
+	 </c:if>
+</div>

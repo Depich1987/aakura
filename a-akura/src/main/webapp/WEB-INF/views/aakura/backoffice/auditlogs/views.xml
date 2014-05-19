@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition extends="backOfficeLayout" name="backoffice/auditlogs/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/auditlogs/list.jspx"/>
+    </definition>
+    
+	<definition extends="backOfficeLayout" name="backoffice/auditlogs/show">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/auditlogs/show.jspx"/>
+    </definition>
+    
+    <definition extends="backOfficeLayout" name="backoffice/auditlogs/settings/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/auditlogs/auditsettingslist.jspx"/>
+    </definition>
+
+    <definition extends="backOfficeLayout" name="backoffice/auditlogs/connections/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/auditlogs/auditconnectionslist.jspx"/>
+    </definition>
+    
+    <definition extends="backOfficeLayout" name="backoffice/auditlogs/transactions/list">
+        <put-attribute name="body" value="/WEB-INF/views/aakura/backoffice/auditlogs/audittransactionslist.jspx"/>
+    </definition>
+    
+</tiles-definitions>

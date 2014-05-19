@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_jcompany" z="3XncU6NyTl9qOpzMP60UZa+Ihjg=">
+            <menu:item id="i_jcompany_new" messageCode="global_menu_new" url="/jcompanys?form" z="2jwrcIbBDQCCryVvzjkNhr4cI7U="/>
+            <menu:item id="i_jcompany_list" messageCode="global_menu_list" url="/jcompanys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/ryd+UDXYsWXxKRHFCk+Rb9jGNc="/>
+        </menu:category>
+        <menu:category id="c_jrole" z="1LXypr9uA2Y0sUZ6naaQz6QkDNQ=">
+            <menu:item id="i_jrole_new" messageCode="global_menu_new" url="/jroles?form" z="Ua9OLd+dWN1dhTIgVpg9xBdaAm8="/>
+            <menu:item id="i_jrole_list" messageCode="global_menu_list" url="/jroles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="kPCkucx1ezIslNaWUj6yAeo+yTo="/>
+        </menu:category>
+        <menu:category id="c_jactivity" z="oSK6loTe+1DEPN6T33qXQGBPDuk=">
+            <menu:item id="i_jactivity_new" messageCode="global_menu_new" url="/jactivitys?form" z="RUDBbEKiZtL20lSC3GYHxRt1VEE="/>
+            <menu:item id="i_jactivity_list" messageCode="global_menu_list" url="/jactivitys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="HDk5rficiheoWL+UwU8Q0vUhUPc="/>
+            <menu:item id="i_jactivity_activitylistreport_report" messageCode="menu_jactivity_activitylistreport_report" url="/jactivitys/reports/activitylistreport?form" z="X2W+UyfNy0DpcawXNFNv49hq3j0="/>
+        </menu:category>
+        <menu:category id="c_juser" z="zPfbJxGDYoTggFCqSI5PcP28wvw=">
+            <menu:item id="i_juser_new" messageCode="global_menu_new" url="/jusers?form" z="HF6035uEZl4582/802l4lQHDIdk="/>
+            <menu:item id="i_juser_list" messageCode="global_menu_list" url="/jusers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="j5DCIt2x7hIKeg1q7+l+fzKNWo4="/>
+        </menu:category>
+        <menu:category id="c_jauditlog" z="1NcTwmLFZOcZBBqsVHnsoUlatU4=">
+            <menu:item id="i_jauditlog_new" messageCode="global_menu_new" url="/jauditlogs?form" z="0k1TztwkRChTNadh02tb2o5qG4Y="/>
+            <menu:item id="i_jauditlog_list" messageCode="global_menu_list" url="/jauditlogs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BzR+wBXxF3BilBdExtjOzy/IpNQ="/>
+        </menu:category>
+        <menu:category id="c_jpayment" z="a5ISlr48ri4/E76kltX+nakybzU=">
+            <menu:item id="i_jpayment_new" messageCode="global_menu_new" url="/jpayments?form" z="gpfsqiIrHVEd246/crhlDgFQtzI="/>
+            <menu:item id="i_jpayment_list" messageCode="global_menu_list" url="/jpayments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mw7c+UsH9SdBuxjaqKSV0aPipWo="/>
+        </menu:category>
+    </menu:menu>
+</div>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:security="http://www.springframework.org/security/tags"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:spring="http://www.springframework.org/tags" 
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:message code="label_com_j1987_aakura_domain_jpayment_plural" var="payments_label" />
+    <spring:message code="label_com_j1987_aakura_domain_jpayment" var="payment_label" />
+    
+    <spring:url value="/frontoffice/payments/create?form" var="createpayment_url"/>
+    <spring:url value="/frontoffice/payments/list?size=10" var="filterpayment_url"/>
+    
+    <security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
+    	<spring:url value="/frontoffice/payments/list/filter?activityFilter=" var="paymentslist_url" htmlEscape="false"/>
+
+    </security:authorize>
+    
+  	<p>
+  		<div class="btn-toolbar">
+   			<div class="btn-group">
+			   	<a href="${createpayment_url}" class="btn btn-primary">
+			   		<spring:message code="entity_create" arguments="${payment_label}" />
+			   	</a>
+	   		</div>
+	   		<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
+	   			<c:if test="${filterPayment != null}">
+		   			<div class="btn-group pull-right">
+		   				<form:form method="get" modelAttribute="filterPayment" commandName="filterPayment" cssClass="form-inline" action="${filterpayment_url}">
+   							 <div class="form-group">
+						   		<label class="col-sm-4 control-label">
+									<spring:message code="frontoffice_filterpayment"/>
+							   </label>
+			   					<div class="col-sm-6">
+				   					<form:select path="activityFilter" cssClass="form-control">
+				   						<form:options items="${activities}" itemLabel="name" itemValue="code" />
+				   					</form:select>
+			   					</div>
+		   					</div>
+		   				</form:form>
+		   			</div>
+	   			</c:if>
+	   			
+   				 <SCRIPT type="text/javascript">
+				 <![CDATA[
+				 	$(document).ready(function(){
+				 		$('#activityFilter').change(function(){
+				 			window.location = '${paymentslist_url}'+$(this).val();
+				 		});
+				 	});
+				 	]]>
+				 </SCRIPT>
+	   			
+	   		</security:authorize>
+	   	</div>
+	</p>
+	
+    <div class="page-header">
+          <h3>
+          	<spring:message code="entity_list_all" arguments="${payments_label}"/>
+   	    	<c:if test="${filterPayment.activityFilter != null }">
+    			[${filterPayment.activityFilter}]
+    		</c:if>
+          </h3>
+    </div>
+     
+    <c:if test="${payments.size() eq 0 }">
+
+	 	<p class="text-center">
+	 		<div class="alert alert-warning">
+	 			<spring:message arguments="${payments_label}" code="entity_not_found" />
+	        </div>
+	 	</p>
+
+  	 </c:if>
+  	 
+     <c:if test="${payments.size() gt 0 }">
+	    
+	        <table:table data="${payments}" id="l_com_j1987_aakura_domain_JPayment" path="/frontoffice/payments" create="false" show="true" delete="true" update="true">
+	        	<table:column id="c_com_j1987_aakura_domain_JPayment_reference" property="reference"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_amount" property="amount"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_paymentDate" property="paymentDate"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_description" property="description"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_paymentType" property="paymentType"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_createdBy" property="createdBy"/>
+	            <table:column id="c_com_j1987_aakura_domain_JPayment_creationDate" property="creationDate" dateTimePattern="dd/mm/yyyy hh:mm:s"/>
+	        </table:table>
+
+	 </c:if>
+</div>

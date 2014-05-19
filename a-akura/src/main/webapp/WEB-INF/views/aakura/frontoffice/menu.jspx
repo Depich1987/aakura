@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:security="http://www.springframework.org/security/tags"
+	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/frontoffice/payments/list?size=10" var="paymentslist_url"/>
+    <spring:url value="/frontoffice/reports/activityreportparams?form" var="activityreportparams_url"/>
+    
+     <div class="list-group">
+        <a href="${paymentslist_url}" class="list-group-item">
+        	<spring:message code="frontoffice_paymentdashboard" />
+        </a>
+        <a href="${activityreportparams_url}" class="list-group-item">
+			<spring:message code="frontoffice_activitiesreports" />
+		</a>
+     </div><!--/.well -->
+
+
+</div>

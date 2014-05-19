@@ -1,0 +1,72 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:spring="http://www.springframework.org/tags" 
+	 xmlns:security="http://www.springframework.org/security/tags" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+
+  <spring:message var="app_name" code="application_name" htmlEscape="false" />
+  <spring:url var="home" value="/" />
+  
+  <spring:url var="backoffice_url" value="/backoffice/" />
+  <spring:url var="frontoffice_url" value="/frontoffice/" />
+  
+  <spring:message code="button_home" var="home_label" htmlEscape="false" />
+  
+   <spring:url value="/resources/j_spring_security_logout" var="logout"/>
+
+  <div class="navbar navbar-toolbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="${home}">${app_name}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        	<ul class="nav navbar-nav">
+              <li>
+              	<a href="${home}">
+					<spring:message code="button_home"/>
+				</a>
+              </li>
+              <li  class="active">
+              	<a href="${backoffice_url}">
+					<spring:message code="backoffice_label"/>
+				</a>
+              </li>
+              
+              <li>
+              	<a href="${frontoffice_url}">
+					<spring:message code="frontoffice_label"/>
+				</a>
+              </li>
+            </ul>
+        
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><a href="#">Help</a></li>
+	             <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                	<security:authentication property="principal.username" />
+	                	<span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  <li>
+	                  	<a href="${logout}">
+							<spring:message code="security_logout"/>
+						</a>
+					</li>
+	                </ul>
+	              </li>
+	          </ul>
+        </div>
+        
+      </div>
+  </div>
+  
+</div> 

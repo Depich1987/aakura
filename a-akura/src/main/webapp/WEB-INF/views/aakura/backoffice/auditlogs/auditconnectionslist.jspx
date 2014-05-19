@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:message code="label_com_j1987_aakura_domain_jauditlog" var="auditlog_label"/>
+    <spring:message code="label_com_j1987_aakura_domain_jauditlog_plural" var="auditlogs_label"/>
+    <spring:message code="backoffice_auditlogs_connexion" var="audit_connection_label"/>
+    <spring:url value="/administration/audit/connectionslistreport" var="exportdata_url" />
+    
+	<div class="page-header">
+		<h3>${audit_connection_label}   
+			<c:if test="${ (not empty startDateAsString) || (not empty endDateAsString) }">
+			: ${startDateAsString} - ${endDateAsString}
+			</c:if>
+		</h3>
+   	</div>
+
+   	<c:if test="${not empty error_msg}">
+    	<p>
+    		<span style="color: red;"><strong>${error_msg}</strong></span> 
+    	</p>
+   	</c:if>
+		    	
+   	<form:form action="${dailyjournal_url}" method="post" modelAttribute="auditLogForm" cssClass="form-inline">
+  		 <div class="form-group">
+   			<label class="sr-only" for="startDateAsString">
+	    		A partir du 
+	    	</label>
+    		<form:input   cssClass="form-control"  path="startDateAsString" placeholder="jj/MM/aaaa"/>
+	    </div>
+	    <div class="form-group">
+	    	<label class="sr-only" for="endDateAsString">
+	    		Jusqu'au 
+	    	</label>
+		    	<form:input cssClass="form-control"  path="endDateAsString" placeholder="jj/MM/aaaa"/>
+		</div>
+		
+		<button type="submit" class="btn btn-success">Rechercher</button>
+   	
+	</form:form>
+
+    <table:table data="${dtauditlogs}" id="l_com_j1987_aakura_domain_JAuditLog" path="/administration/audit/connections" create="false" delete="false" update="false" show="true">
+        <table:column id="c_com_j1987_aakura_domain_JAuditlog_eventdate" property="eventDateAsString"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_userId" property="userId"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_eventCategory" property="eventCategory"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_description" property="description"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_param1" property="param1"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_param2" property="param2"/>
+        <table:column id="c_com_j1987_aakura_domain_JAuditLog_ipAddress" property="ipAddress"/>
+    </table:table>
+
+    <SCRIPT type="text/javascript">
+    	$(document).ready(function(){
+    		
+    		$('#startDateAsString').datepicker('setValue',new Date());
+    		$('#endDateAsString').datepicker('setValue',new Date());
+    		
+    	});
+    </SCRIPT>
+</div>
+
+

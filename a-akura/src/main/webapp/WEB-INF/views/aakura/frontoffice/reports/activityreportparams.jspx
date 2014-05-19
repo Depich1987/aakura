@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:security="http://www.springframework.org/security/tags" 
+	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+ 
+ 	<spring:message code="label_com_j1987_aakura_domain_jpayment_activity" var="activity_label"/>
+ 	<spring:message code="menu_jactivity_activitylistreport_report" var="activitylistreport_label" htmlEscape="false"/>
+ 	
+ 	<spring:url value="/frontoffice/reports/activityreport" var="activitylist_url" htmlEscape="false"/>
+
+    
+    <div class="page-header">
+          <h3>
+			${activitylistreport_label}
+		 </h3>
+     </div>
+     
+     <form:form action="${activitylist_url}" method="get" modelAttribute="reportFilterForm" commandName="reportFilterForm" cssClass="form-horizontal">
+	 
+ 	 	<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
+		 <div class="form-group">
+		   <label class="col-sm-2 control-label">
+				${activity_label}
+		   </label>
+		   <div class="col-sm-4">
+		     <form:select path="activityCodeList" placeholder="${activity_label}" items="${activities}" itemLabel="name" itemValue="code" cssClass="form-control"/>
+		   </div>
+		 </div>
+	 	</security:authorize>
+	 	
+	 	<security:authorize access="hasAnyRole('ROLE_ACTIVITY_MANAGER')">
+		 	<div class="form-group">
+			   <label class="col-sm-2 control-label">
+					${activity_label}
+			   </label>
+			   <div class="col-sm-4">
+			     <form:select path="activityCodeList" placeholder="${activity_label}" items="${activities}" itemLabel="name" itemValue="code" cssClass="form-control" readonly="true"/>
+			   </div>
+			 </div>
+		 </security:authorize>
+		 
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="paymentIn">
+				<spring:message code="form_paymentin"/>
+			</label>
+		    <div class="col-sm-3">
+		    	<form:checkbox  path="paymentIn" />
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="paymentOut">
+				<spring:message code="form_paymentout"/>
+			</label>
+		    <div class="col-sm-3">
+		    	<form:checkbox  path="paymentOut" />
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="startDate">Date de début traitement</label>
+		    <div class="col-sm-3">
+		    	<form:input   path="startDate" cssClass="form-control"/>
+		    </div>
+		</div>
+					
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="endDate">Date de fin traitement</label>
+		    <div class="col-sm-3">
+		    	<form:input  path="endDate" cssClass="form-control"/>
+		    </div>
+		</div>	
+		
+     	<div class="form-group">
+		   <div class="col-sm-offset-2 col-sm-10">
+		     <button type="submit" class="btn btn-success">
+				<spring:message code="button_proceed"/>
+			</button>
+		   </div>
+	   </div>	
+		 
+   </form:form>
+   
+   <script type="text/javascript">
+    
+    	$(document).ready(function(){
+    		$('#startDate').datepicker({ 
+  		      autoclose: true, 
+		      todayHighlight: true 
+		    });
+    		$('#endDate').datepicker({ 
+    		      autoclose: true, 
+    		      todayHighlight: true 
+    		    });
+    	});
+    
+    </script>
+
+</div>

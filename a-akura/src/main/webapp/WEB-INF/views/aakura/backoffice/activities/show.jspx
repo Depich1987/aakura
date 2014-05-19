@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message code="label_com_j1987_aakura_domain_jactivity_plural" var="activities_label"/>
+    <spring:message code="label_com_j1987_aakura_domain_jactivity" var="activity_label"/>
+    
+	<spring:message code="entity_show" arguments="${activity_label}"	var="actvityentity_showdetails" />
+	<spring:message code="menu_backto_entitylist" arguments="${activities_label}" var="backtoactivitieslist_label" />
+
+	<spring:url value="/backoffice/activities/${activity.id}?form" var="updateactivity_url"/>
+	<spring:url value="/backoffice/activities/list?size=10" var="activitieslist_url"/>
+
+   	<p>
+   		<div class="btn-toolbar">
+   			<div class="btn-group">
+			   	<a href="${activitieslist_url}" class="btn btn-default">
+			   		${backtoactivitieslist_label}
+			   	</a>
+			   	<a href="${updateactivity_url}" class="btn btn-warning">
+			   		<spring:message code="entity_update" arguments="${activity_label}" />
+			   	</a>
+		   	</div>
+	   	</div>
+    </p>
+    
+	<div class="page-header">
+		<h3>${actvityentity_showdetails}</h3>
+	</div>
+
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_jactivity_code"/>
+				</dt>
+				<dd>${activity.code}</dd>
+			</dl>
+		</div>
+
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_jactivity_name"/>
+				</dt>
+				<dd>${activity.name}</dd>
+			</dl>
+		</div>
+		
+		<div class="form-group">
+			<dl>
+				<dt>
+					<spring:message code="label_com_j1987_aakura_domain_jactivity_description"/>
+				</dt>
+				<dd>${activity.description}</dd>
+			</dl>
+		</div>
+
+</div>

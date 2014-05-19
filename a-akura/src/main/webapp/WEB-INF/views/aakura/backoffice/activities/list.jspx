@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" 
+	 xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:form="http://www.springframework.org/tags/form"  
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:message code="label_com_j1987_aakura_domain_jactivity_plural" var="activities_label" />
+    <spring:message code="label_com_j1987_aakura_domain_jactivity" var="activity_label" />
+    
+    <spring:url value="/backoffice/activities/create?form" var="createactivity_url"/>
+
+	<p>
+	   	<a href="${createactivity_url}" class="btn btn-primary">
+	   		<spring:message code="entity_create" arguments="${activity_label}" />
+	   	</a>
+	</p>
+
+    <div class="page-header">
+          <h3><spring:message code="entity_list_all" arguments="${activities_label}"/></h3>
+     </div>
+
+	  <c:if test="${activities.size() eq 0 }">
+
+		 	<p class="text-center">
+		 		<div class="alert alert-warning">
+		 			<spring:message arguments="${activities_label}" code="entity_not_found" />
+		        </div>
+		 	</p>
+
+	  </c:if>
+	  
+	  <c:if test="${activities.size() gt 0 }">
+	  
+	    <c:if test="${not empty error}">
+	        <h3>
+	            <spring:message code="${error}" htmlEscape="false"/>
+	        </h3>
+	    </c:if>
+        <table:table data="${activities}" id="l_com_j1987_aakura_domain_JActivity" path="/backoffice/activities" create="false" show="true" delete="false" update="true">
+        	<table:column id="c_com_j1987_aakura_domain_JActivity_code" property="code"/>
+            <table:column id="c_com_j1987_aakura_domain_JActivity_name" property="name"/>
+            <table:column id="c_com_j1987_aakura_domain_JActivity_description" property="description"/>
+        </table:table>
+	 </c:if>
+ 
+</div>

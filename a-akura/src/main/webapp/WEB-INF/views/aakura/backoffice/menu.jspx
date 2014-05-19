@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:url value="/backoffice/generalsettings/details" var="generalsettings_details_url"/>
+    <spring:url value="/backoffice/activities/list?size=10" var="activitylist_url"/>
+    <spring:url value="/backoffice/users/list?size=10" var="userslist_url" />
+    
+    <spring:url value="/backoffice/auditlogs/connections/list?size=10" var="auditlogs_connectionslist_url" />
+    <spring:url value="/backoffice/auditlogs/settings/list?size=10" var="auditlogs_settingslist_url" />
+    <spring:url value="/backoffice/auditlogs/transactions/list?size=10" var="auditlogs_transactionslist_url" />
+    
+    <div class="list-group">
+    
+       	<a href="${generalsettings_details_url}" class="list-group-item">
+			<spring:message code="backoffice_companysettings"/>
+		</a>
+		
+     	<a href="${activitylist_url}" class="list-group-item">
+       		<spring:message code="menu_item_jactivity_list_label"/>
+       	</a>
+       	
+        <a href="${userslist_url}" class="list-group-item">
+			<spring:message code="menu_item_juser_list_label"/>
+	    </a>
+	    
+       	<a href="${auditlogs_connectionslist_url}" class="list-group-item">
+			<spring:message code="backoffice_auditlogs_connexion"/>
+		</a>
+       	<a href="${auditlogs_settingslist_url}" class="list-group-item">
+			<spring:message code="backoffice_auditlogs_settings"/>
+		</a>
+       	<a href="${auditlogs_transactionslist_url}" class="list-group-item">
+       		<spring:message code="backoffice_auditlogs_transactions"/>
+       	</a>
+      </div>
+      
+</div>
